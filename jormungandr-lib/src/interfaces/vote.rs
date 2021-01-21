@@ -13,7 +13,6 @@ use chain_impl_mockchain::{
 use chain_vote::MemberPublicKey;
 use core::ops::Range;
 use serde::de::Visitor;
-use serde::export::Formatter;
 use serde::ser::Error;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
@@ -97,7 +96,7 @@ impl<'de> Deserialize<'de> for SerdeMemberPublicKey {
         impl<'de> Visitor<'de> for BytesVisitor {
             type Value = SerdeMemberPublicKey;
 
-            fn expecting(&self, formatter: &mut Formatter) -> std::fmt::Result {
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("binary data for member public key")
             }
 
